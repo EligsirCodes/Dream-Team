@@ -51,7 +51,7 @@ fun RabanoProfile(context: Context) {
         ) {
             item {
                 ProfileImage(Modifier
-                    .height(360.dp),
+                    .height(330.dp),
                     painterResource(R.drawable.rabano)
                 )
 
