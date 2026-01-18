@@ -1,5 +1,6 @@
 package com.example.dreamteam
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -28,64 +29,42 @@ class RabanoScreen : ComponentActivity() {
 
         setContent {
             DreamTeamTheme {
-                RabanoProfile()
+                RabanoProfile(this)
             }
         }
     }
 }
 
 @Composable
-fun RabanoProfile() {
-
-    val context = LocalContext.current
-
+fun RabanoProfile(context: Context) {
     Scaffold(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize(),
+        topBar = { TopBar() }
     ) { innerPadding ->
-
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
+            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
             item {
-
-                Image(
-                    painter = painterResource(R.drawable.rabano),
-                    contentDescription = "Profile Image",
-                    modifier = Modifier
-                        .width(280.dp)
-                        .height(380.dp)
-                        .padding(16.dp)
-                        .border(6.dp, Color.Black)
+                ProfileImage(Modifier
+                    .height(360.dp),
+                    painterResource(R.drawable.rabano)
                 )
 
-                Text(
-                    text = "Trisha Ann J. Rabano",
-                    fontSize = 26.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(8.dp)
+                NameDisplay("Trisha Ann J. Rabano")
+
+                BioDisplay(
+                    "I am a 21 year old 3rd Year Bachelor of Science in Information Technology student and I like to read and watch horror movies."
                 )
 
-                Text(
-                    text = "I am a 21 year old 3rd Year Bachelor of Science in Information Technology student and I like to read and watch movies.",
-                    fontSize = 16.sp,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(20.dp)
-                )
-
-                Button(
-                    onClick = {
-                        val intent = Intent(context, MainActivity::class.java)
-                        context.startActivity(intent)
-                    },
-                    modifier = Modifier.padding(bottom = 40.dp)
-                ) {
-                    Text("Go Back")
-                }
+                NavigationButton("Go Back", {
+                    val mainIntent = Intent(context, MainActivity::class.java)
+                    context.startActivity(mainIntent)
+                })
             }
         }
     }
