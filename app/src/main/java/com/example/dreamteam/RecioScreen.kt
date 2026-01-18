@@ -44,7 +44,7 @@ fun RecioProfile(context: Context) {
         ) {
             item {
                 ProfileImage(Modifier
-                        .height(330.dp),
+                        .height(300.dp),
                     painterResource(R.drawable.recio)
                 )
 
