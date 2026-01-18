@@ -48,14 +48,14 @@ fun RecioProfile(context: Context) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
-                ProfileImageDisplay(Modifier
-                    .height(400.dp),
+                ProfileImage(Modifier
+                        .height(360.dp),
                     painterResource(R.drawable.recio)
                 )
 
-                NameFormatDisplay("Joaquin Aaron P. Recio")
+                NameDisplay("Joaquin Aaron P. Recio")
 
-                BioFormatDisplay(
+                BioDisplay(
                     "I am a 21 year old 3rd Year Bachelor of Science in Information Technology student. I am also the Society of Information Technology Students - 3rd Year Representative, and I like to play mobile games, watch Netflix, and play sports, especially when it comes to basketball."
                 )
 
@@ -65,55 +65,5 @@ fun RecioProfile(context: Context) {
                 })
             }
         }
-    }
-}
-
-@Composable
-fun ProfileImageDisplay(modifier: Modifier = Modifier, painter: Painter) {
-    Image(
-        modifier = modifier
-            .padding(bottom = 10.dp)
-            .border(
-                width = 7.dp,
-                color = Color.Black
-            ),
-        painter = painter,
-        contentDescription = "Profile Image"
-    )
-}
-
-@Composable
-fun NameFormatDisplay(name: String, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(10.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = name,
-            fontSize = 25.sp,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Justify
-        )
-    }
-}
-
-@Composable
-fun BioFormatDisplay(bio: String, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(top = 10.dp, bottom = 10.dp, start = 20.dp, end = 20.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = bio,
-            fontSize = 15.sp,
-            fontWeight = FontWeight.Light,
-            textAlign = TextAlign.Center
-        )
     }
 }
