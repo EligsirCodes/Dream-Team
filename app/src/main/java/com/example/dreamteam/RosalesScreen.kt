@@ -1,11 +1,5 @@
 package com.example.dreamteam
 
-import android.content.Context
-import android.content.Intent
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,22 +13,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.*
-import com.example.dreamteam.ui.theme.DreamTeamTheme
-
-class RosalesScreen : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DreamTeamTheme {
-                RosalesProfile(this)
-            }
-        }
-    }
-}
+import androidx.navigation.NavController
 
 @Composable
-fun RosalesProfile(context: Context) {
+fun RosalesProfile(navController: NavController) {
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
@@ -60,8 +42,7 @@ fun RosalesProfile(context: Context) {
                 )
 
                 NavigationButton("Go Back", {
-                    val mainIntent = Intent(context, MainActivity::class.java)
-                    context.startActivity(mainIntent)
+                    navController.popBackStack()
                 })
             }
         }
